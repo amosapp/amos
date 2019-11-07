@@ -1,12 +1,16 @@
 import {
-  H, React, W,
+  H, R, React, W,
   Input, AmosChat
 } from 'common'
 import top from './learn-top.sc'
 
-const messages = [
+let messages = [
   `Watcha interested in? 🤗`
 ]
+
+if (/Mobi/.test(navigator.userAgent)) {
+  messages = R.append (`On mobile you may need to close the keyboard for the topics to work!`) (messages)
+}
 
 const View = ({onEnt, results, register, onSubmit, ...rest}) => (
   <form css={top} autocomplete='off' onSubmit={onSubmit} {...rest}>
