@@ -1,0 +1,9 @@
+FROM neo4j:3.5.11
+
+ENV NEO4J_AUTH=neo4j/letmein
+
+ENV NEO4JLABS_PLUGINS '["apoc"]'
+
+EXPOSE 7474 7473 7687
+
+CMD neo4j

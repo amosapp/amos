@@ -1,0 +1,54 @@
+type Topic {
+  # id: ID!
+  # _id: ID!
+  names: [String!]!
+  # children: [IS_PART_OF!]!
+  # parents: [IS_PART_OF!]!
+  # amosGames: [FOR_TOPIC!]!
+  # getChildrenRec (level: Int!): [Path!]!
+  getChildrenRec (level: Int!): [String!]!
+  getMostCommonPrerequisites: [String!]!
+  createLink (name: String!): String!
+}
+
+type IS_PART_OF {
+  from: Topic!
+  to: Topic!
+}
+
+input CreateTopicInput {
+  names: [String!]!
+}
+
+input AddIsPartOfInput {
+  parent: ID!
+  child: ID!
+}
+
+input AutocompleteInput {
+  str: String!
+  first: Int!
+}
+
+type AutocompleteResult {
+  name: String!
+  topic: Topic!
+}
+
+type AutocompleteResponse {
+  success: Boolean!
+  message: String
+  results: [AutocompleteResult!]
+}
+
+extend type Query {
+  # TODO: Change to [Path!]!
+  # topic (name: String!): Topic!
+  autocomplete (input: AutocompleteInput!): AutocompleteResponse!
+  getTopResourcesByName (name: String!): [Resource!]!
+}
+
+extend type Mutation {
+  createTopic (input: CreateTopicInput!): Response!
+  addIsPartOf (input: AddIsPartOfInput!): Response!
+}

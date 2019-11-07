@@ -1,0 +1,49 @@
+{
+  "name": "amos-scripts",
+  "version": "1.0.0",
+  "description": "Learning resource recommendation",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel src -d build",
+    "start:prod": "cross-env NODE_ENV=production node -r dotenv-flow/config build/index.js",
+    "start:prod:watch": "cross-env NODE_ENV=production npx babel-node -r node_modules/dotenv-flow/config src/index.js",
+    "start": "cross-env NODE_ENV=development npx nodemon --exec npx babel-node -r node_modules/dotenv-flow/config src/index.js"
+  },
+  "author": "",
+  "license": "Unlicense",
+  "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "@solviofoundation/amos-parser": "^1.3.0",
+    "@solviofoundation/amos-reviews": "^1.1.0",
+    "@solviofoundation/amos-topics": "^1.6.0",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
+    "bluebird": "^3.7.0",
+    "buffer": "^5.4.3",
+    "core-js": "^3.2.1",
+    "dotenv-flow": "^3.1.0",
+    "graphql": "^14.5.7",
+    "graphql-tag": "^2.10.1",
+    "neo4j-driver": "^1.7.6",
+    "node-fetch": "^2.6.0",
+    "ramda": "^0.26.1",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.0",
+    "babel-eslint": "^11.0.0-beta.0",
+    "cross-env": "^6.0.0",
+    "eslint": "^6.3.0",
+    "nodemon": "^1.19.2"
+  }
+}

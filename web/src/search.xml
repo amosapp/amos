@@ -1,0 +1,17 @@
+<OpenSearchDescription xmlns='http://a9.com/-/spec/opensearch/1.1/' xmlns:moz='http://www.mozilla.org/2006/browser/search/'>
+  <ShortName>Amos</ShortName>
+  <Description>Amos: Learn anything you want</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <!-- <Image width='16' height='16' type='image/x-icon'>Favicon url</Image> -->
+  <!-- <Url
+    type='application/x-suggestions+json'
+    method='GET'
+    template='TODO:'
+  /> -->
+  <Url
+    type='text/html'
+    method='GET'
+    template='https://www.amos.app/opensearch?query={searchTerms}'
+  />
+  <SearchForm>https://www.amos.app/search</SearchForm>
+</OpenSearchDescription>

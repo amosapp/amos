@@ -1,0 +1,92 @@
+enum Role {
+  USER
+  ADMIN
+}
+
+type User {
+  username: String!
+  # createdAt: DateTime!
+
+  # Relations
+  votes: [VOTED_ON!]!
+  proficiencies: [PROFICIENCY!]!
+
+  # Functions
+  # discover: [Resource!]!
+  # search (topic: String!): [Resource!]!
+}
+
+type AnonymousUser {
+  ip: String!
+  votes: [VOTED_ON_ANONYMOUS!]!
+}
+
+type VOTED_ON {
+  from: User!
+  to: AmosGame!
+  # timestamp: DateTime!
+}
+
+type VOTED_ON_ANONYMOUS {
+  from: AnonymousUser!
+  to: Foo!
+  # timestamp: DateTime!
+}
+
+type Foo {
+  bar: String!
+}
+
+type PROFICIENCY {
+  from: User!
+  to: Topic!
+}
+
+input LoginInput {
+  usernameOrEmail: String!
+  password: String!
+}
+
+input AuthFacebookInput {
+  fbAccessToken: String!
+}
+
+input AuthGithubInput {
+  ghCode: String!
+}
+
+extend type Query {
+  login (input: LoginInput!): Response!
+  # currentUser (name: String): String
+  # users: [User!] @hasRole (roles: [ADMIN])
+  #   @cypher(
+  #     statement: "MATCH (u:User) WITH { username: u.username, id: u.id, email: u.email} as User RETURN User"
+  #   )
+}
+
+input SignupInput {
+  username: String!
+  email: String!
+  password: String!
+  repeatPassword: String!
+}
+
+input SignupFacebookInput {
+  fbAccessToken: String!
+  username: String!
+}
+
+input SignupGithubInput {
+  ghAccessToken: String!
+  username: String!
+}
+
+extend type Mutation {
+  signup (input: SignupInput!): Response!
+  signupFacebook (input: SignupFacebookInput!): Response!
+  signupGithub (input: SignupGithubInput!): Response!
+  authFacebook (input: AuthFacebookInput!): Response!
+  authGithub (input: AuthGithubInput!): Response!
+  # updatePassword (email: String!, password: String!, _new: String!): String!
+  # selfAttest (topic: String!): Boolean!
+}

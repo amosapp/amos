@@ -1,0 +1,101 @@
+type Resource {
+  type: String
+  url_main: String
+  url_goodreads: String
+  url_download_pdf: String
+  url_download_epub: String
+  url_download_mobi: String
+  typeSpecific_authors: [String!]
+  typeSpecific_goodreadsAvgRating: String
+  typeSpecific_goodreadsNoRatings: String
+  typeSpecific_pages: String
+  typeSpecific_datePublished: String
+  typeSpecific_isbn: [String!]
+  typeSpecific_dewey: [String!]
+  name: String
+  amosGames: [FOR_RESOURCE!]!
+  # TODO: Change
+  title: String
+  link: String
+  topics: [Topic!]!
+  prerequisites: [Prerequisite!]!
+}
+
+type HAS_TOPIC {
+  from: Resource!
+  to: Topic!
+}
+
+type Prerequisite {
+  level: Int!
+  strength: Int!
+  topic: Topic!
+}
+
+enum ResourceType {
+  BOOK
+  LECTURE_NOTES
+  ONLINE_COURSE
+}
+
+# TODO: Move to union or interface types (once neo4j-graphql-js supports them)
+enum AmosGameType {
+  TOPIC
+  PREREQUISITE
+}
+
+type AmosGame {
+  type: AmosGameType!
+  resource: FOR_RESOURCE!
+  topic: FOR_TOPIC!
+  # votes: [VOTED_ON]!
+  level: Int # only for Prerequisite
+  strength: Int # only for Prerequisite
+}
+
+type FOR_RESOURCE {
+  from: AmosGame!
+  to: Resource!
+}
+
+type FOR_TOPIC {
+  from: AmosGame!
+  to: Topic!
+}
+
+input PrerequisiteInput {
+  level: Int!
+  strength: Int!
+  topic: ID!
+}
+
+input AddReviewInput {
+  links: [String!]!
+  # One of (topics, prerequisites) is mandatory
+  topics: [ID!]
+  prerequisites: [PrerequisiteInput!]
+}
+
+input AddReviewHydrationInput {
+  type: String
+  name: String
+  topics: [String!]
+  url_main: String
+  url_goodreads: String
+  url_download_pdf: String
+  url_download_epub: String
+  url_download_mobi: String
+  typeSpecific_authors: [String!]
+  typeSpecific_goodreadsAvgRating: String
+  typeSpecific_goodreadsNoRatings: String
+  typeSpecific_datePublished: String
+  typeSpecific_pages: String
+  typeSpecific_isbn: [String!]
+  typeSpecific_dewey: [String!]
+}
+
+extend type Mutation {
+  addReview (input: AddReviewInput!): Response!
+  # For hydration
+  addReviewHydration (input: AddReviewHydrationInput!): Response!
+}

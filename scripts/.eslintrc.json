@@ -1,0 +1,7 @@
+{
+  "extends": "../common/.eslintrc",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": "off"
+  }
+}

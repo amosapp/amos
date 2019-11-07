@@ -1,0 +1,15 @@
+{
+  "extends": "../common/.eslintrc",
+  "env": {
+    "browser": true,
+  },
+  "plugins": ["react"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-no-undef": [2, {
+      "allowGlobals": true
+    }],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": [2],
+  }
+}

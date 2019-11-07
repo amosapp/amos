@@ -1,0 +1,7 @@
+{
+  "extends": "../common/.eslintrc",
+  "parser": "babel-eslint",
+  "rules": {
+    "max-lines": ["error", {"max": 120, "skipBlankLines": false, "skipComments": false}]
+  }
+}

@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  db:
+    build: ./db
+    ports:
+      - 7473:7473
+      - 7474:7474
+      - 7687:7687
+
+  api:
+    build: ./api
+    ports:
+      - 4000:4000
+      - 4001:4001
+    environment:
+      - NEO4J_URI=bolt://db:7687 
+    links:
+    - db
+    depends_on:
+    - db
+    volumes:
+      - ./api:/app # 
+      - /app/node_modules # data volume
+
+  web:
+    build: ./web
+    ports:
+      - 80:3000
+      - 8080:8080
+    links:
+    - api
+    depends_on:
+    - api
+    volumes:
+      - ./web:/app
+      - /app/node_modules # data volume
+
+volumes:
+  api-nm:
+    external: true

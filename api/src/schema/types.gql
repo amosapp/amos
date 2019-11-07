@@ -1,0 +1,10 @@
+scalar StringList
+
+type Response {
+  success: Boolean!
+  message: StringList
+}
+
+type Query
+
+type Mutation
