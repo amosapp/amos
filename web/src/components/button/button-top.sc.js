@@ -44,9 +44,6 @@ top = H.css`
     }
   }
 
-  ${H.ifProp (`primary`, primary)}
-  ${H.ifProp (`iconOnly`, iconOnly)}
-
   > ${Icon} {
     height: 15px;
   }
@@ -68,6 +65,9 @@ top = H.css`
   &:focus {
     outline: none;
   }
+
+  ${H.ifProp (`primary`, primary)}
+  ${H.ifProp (`iconOnly`, iconOnly)}
 `
 
 export default top
