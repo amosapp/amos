@@ -5,11 +5,12 @@ import {
 import top from './learn-top.sc'
 
 let messages = [
-  `Watcha interested in? 🤗`
+  `Watcha interested in? 🤗`,
+  `UPDATE: You need to select a topic from the list. If there's no list, try going back a few characters and you should see one!`
 ]
 
 if (/Mobi/.test(navigator.userAgent)) {
-  messages = R.append (`On mobile you may need to close the keyboard for the topics to work!`) (messages)
+  messages = R.append (`...On mobile you may need to close the keyboard for the topics to work!`) (messages)
 }
 
 const View = ({onEnt, results, register, onSubmit, ...rest}) => (
