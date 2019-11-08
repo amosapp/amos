@@ -56,7 +56,7 @@ signup = async (_, {input}, {session}) => {
       const userId = user.get (`u`).identity.low,
       {records: [localAccount]} = await session.run (getLocalAccountById, {userId})
 
-      H.assert (R.isNil (localAccount)) (CONST.email_taken)
+      H.assert (R.isNil (localAccount)) (CONST.email_taken (email))
 
       /* Usernames should match too */
       const realUsername = user.get (`u`).properties.username
