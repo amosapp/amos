@@ -52,7 +52,7 @@ updateTopics = `
   match (r: Resource) where id (r) = toInteger ($resourceId)
   unwind $consensedTopicIds as topicId
   match (t: Topic) where id (t) = toInteger (topicId)
-  merge (r)-[:HAS_TOPIC]->(t)
+  merge (r)-[:HAS_TOPIC {created: datetime()}]->(t)
 `
 
 const addReviewHydration = async (_, {input}, {session, user}) => {
