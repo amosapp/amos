@@ -15,7 +15,7 @@ const top = H.css`
     padding-left: 0;
 
     ${Link} {
-      font-size: 16px;
+      font-size: 4vw;
     }
   }
 `

@@ -20,10 +20,10 @@ const View = ({onEnt, results, register, onSubmit, ...rest}) => (
     </AmosChat>
     <Input
       name='str'
-      link={true}
       onEnt={onEnt}
       results={results}
       ref={register}
+      link
       {...rest}
     />
   </form>
