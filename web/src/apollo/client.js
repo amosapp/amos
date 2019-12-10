@@ -20,7 +20,7 @@ client = new ApolloClient({
   resolvers,
   uri,
   request,
-  fetchOptions: {mode: `no-cors`}
+  fetchOptions: {mode: `cors`}
 })
 
 initCache (client)
