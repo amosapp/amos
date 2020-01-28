@@ -47,7 +47,9 @@ const hook = props => {
     returnPartialData: true,
     fetchPolicy: `cache-and-network`
   }
-  const {data} = useQuery (QUERY_TOPIC, options)
+  const a = useQuery (QUERY_TOPIC, options)
+  const data = a.data
+
 
   /* eslint-disable max-len */
   const message = [

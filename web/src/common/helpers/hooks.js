@@ -3,7 +3,9 @@ import {React} from 'common'
 export const
 
 useMount = mount => React.useEffect(
-  mount, []
+  () => {
+    mount()
+  }, []
 ),
 
 useUnmount = unmount => React.useEffect(

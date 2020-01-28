@@ -1,11 +1,11 @@
 import {H} from 'common'
 
 const tail = H.css`
-  height: 12px;
-  left: -10px;
-  overflow: hidden;
   position: absolute;
+  overflow: hidden;
   top: 12px;
+  left: -10px;
+  height: 12px;
   width: 10px;
 
   &::after {

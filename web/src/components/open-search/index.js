@@ -5,8 +5,7 @@ import {
 } from 'common'
 
 const OpenSearch = (props) => {
-  const [query] = useQueryParam (`query`, StringParam),
-  [] = [query |> console.log ('query', #)]
+  const [query] = useQueryParam (`query`, StringParam)
   
   return (
     <></>

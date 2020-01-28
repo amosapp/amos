@@ -6,7 +6,8 @@ import top from './learn-top.sc'
 
 let messages = [
   `Watcha interested in? 🤗`,
-  `UPDATE: You need to select a topic from the list. If there's no list, try going back a few characters and you should see one!`
+  `Update: The database is currently on a dev plan. So after typing something, you need to wait 30 s for it to wake up.`,
+  `Then all requests should work, including read and post. 😔`
 ]
 
 if (/Mobi/.test(navigator.userAgent)) {

@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-  "baseUrl": ".",
-  "paths": {
-    "ClientApp/*": ["./ClientApp/*"],
-    "common/*": ["./src/common/common.js"],
-    "components/*": ["./src/components/*"],
-    "apollo/*": ["./src/apollo/*"]
-  }
-},
+    "baseUrl": ".",
+    "paths": {
+      "ClientApp/*": ["./ClientApp/*"],
+      "common/*": ["./src/common/common.js"],
+      "components/*": ["./src/components/*"],
+      "apollo/*": ["./src/apollo/*"]
+    }
+  },
   "include": ["./src/**/*"]
 }
